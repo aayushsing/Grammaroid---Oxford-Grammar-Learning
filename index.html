@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Grammaroid - Oxford Grammar Learning</title>
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
-    body{background:linear-gradient(135deg,#eef2f3,#d9e4f5);color:#333;line-height:1.6;}
-    header{background:linear-gradient(90deg,#4a90e2,#0072ff);color:#fff;text-align:center;padding:20px;position:sticky;top:0;z-index:1000;}
-    header h1{font-size:2rem;animation:float 3s ease-in-out infinite;}
-    @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
-    nav{display:flex;justify-content:center;gap:20px;margin-top:10px;flex-wrap:wrap;}
-    nav a{color:#fff;text-decoration:none;font-weight:bold;transition:.3s;}
-    nav a:hover{transform:scale(1.1);}
-    section{max-width:1000px;margin:auto;padding:40px 20px;}
-    h2{color:#0072ff;margin-bottom:15px;}
-    .card{background:#fff;border-radius:15px;padding:20px;box-shadow:0 6px 12px rgba(0,0,0,0.1);margin-bottom:20px;transition:.3s;}
-    .card:hover{transform:translateY(-5px) scale(1.02);}
-    button{padding:10px;border:none;border-radius:10px;margin:5px 0;width:100%;cursor:pointer;transition:.3s;}
-    button:hover{background:#0072ff;color:#fff;}
-    textarea{width:100%;height:150px;padding:15px;border-radius:10px;border:1px solid #ccc;}
-    .btn{display:inline-block;padding:10px 20px;background:#0072ff;color:#fff;border:none;border-radius:8px;margin-top:10px;cursor:pointer;transition:.3s;}
-    .btn:hover{background:#0056b3;}
-    footer{text-align:center;background:#f8f8f8;padding:20px;margin-top:40px;}
-    footer img{width:50px;height:50px;border-radius:50%;margin-top:10px;}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammaroid - Oxford Grammar Learning</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{background:linear-gradient(135deg,#eef2f3,#d9e4f5);color:#333;line-height:1.6;}
+header{background:linear-gradient(90deg,#4a90e2,#0072ff);color:#fff;text-align:center;padding:20px;position:sticky;top:0;z-index:1000;}
+header h1{font-size:2rem;animation:float 3s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+nav{display:flex;justify-content:center;gap:20px;margin-top:10px;flex-wrap:wrap;}
+nav a{color:#fff;text-decoration:none;font-weight:bold;transition:.3s;}
+nav a:hover{transform:scale(1.1);}
+section{max-width:1000px;margin:auto;padding:40px 20px;}
+h2{color:#0072ff;margin-bottom:15px;}
+.card{background:#fff;border-radius:15px;padding:20px;box-shadow:0 6px 12px rgba(0,0,0,0.1);margin-bottom:20px;transition:.3s;cursor:pointer;}
+.card:hover{transform:translateY(-5px) scale(1.02);}
+.card-content{display:none;padding-top:10px;}
+button{padding:10px;border:none;border-radius:10px;margin:5px 0;width:100%;cursor:pointer;transition:.3s;}
+button:hover{background:#0072ff;color:#fff;}
+textarea{width:100%;height:150px;padding:15px;border-radius:10px;border:1px solid #ccc;}
+.btn{display:inline-block;padding:10px 20px;background:#0072ff;color:#fff;border:none;border-radius:8px;margin-top:10px;cursor:pointer;transition:.3s;}
+.btn:hover{background:#0056b3;}
+footer{text-align:center;background:#f8f8f8;padding:20px;margin-top:40px;}
+footer img{width:50px;height:50px;border-radius:50%;margin-top:10px;}
+</style>
 </head>
 <body>
 
@@ -39,84 +40,177 @@
 </header>
 
 <section id="topics">
-  <h2>📚 Learn Grammar</h2>
-  <div class="card"><b>Parts of Speech:</b> Nouns, Pronouns, Verbs, Adjectives, Adverbs, Prepositions, Conjunctions, Interjections.</div>
-  <div class="card"><b>Syntax & Sentence Structure:</b> Sentences (simple, compound, complex), Clauses, Fragments, Subjects & Predicates.</div>
-  <div class="card"><b>Verb Forms:</b> Tenses (12), Active/Passive voice, Modals (can, should, must).</div>
-  <div class="card"><b>Word Formation & Usage:</b> Morphology, Articles, Subject-Verb Agreement, Direct/Indirect Speech, Possessives.</div>
-  <div class="card"><b>Mechanics & Punctuation:</b> Capitalization rules, Commas, Semicolons, Apostrophes, Colons.</div>
+<h2>📚 Learn Grammar</h2>
+
+<div class="card" onclick="toggleCard(this)">
+  <b>1. Nouns</b>
+  <div class="card-content">
+    <p>A noun names a person, place, thing, or idea.</p>
+    <ul>
+      <li>1. Aayush is a <b>student</b>.</li>
+      <li>2. She bought a <b>car</b>.</li>
+      <li>3. The <b>dog</b> barked loudly.</li>
+      <li>4. <b>Love</b> is a strong feeling.</li>
+      <li>5. Varanasi is a <b>city</b>.</li>
+      <li>6. Books are kept in the <b>library</b>.</li>
+      <li>7. His <b>happiness</b> was visible.</li>
+      <li>8. <b>Teachers</b> guide students.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+  <b>2. Pronouns</b>
+  <div class="card-content">
+    <p>Pronouns replace nouns to avoid repetition.</p>
+    <ul>
+      <li>1. <b>He</b> is my brother.</li>
+      <li>2. <b>She</b> loves reading.</li>
+      <li>3. <b>It</b> is raining.</li>
+      <li>4. <b>They</b> are playing football.</li>
+      <li>5. <b>We</b> are going to school.</li>
+      <li>6. Give it to <b>him</b>.</li>
+      <li>7. This is <b>mine</b>.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+  <b>3. Verbs & Tenses</b>
+  <div class="card-content">
+    <p>Verbs show actions or states. Tenses show time.</p>
+    <ul>
+      <li>1. I <b>eat</b> breakfast every day. (Present)</li>
+      <li>2. She <b>went</b> to the market. (Past)</li>
+      <li>3. They <b>will travel</b> tomorrow. (Future)</li>
+      <li>4. He <b>is running</b> now. (Present Continuous)</li>
+      <li>5. We <b>have finished</b> our homework. (Present Perfect)</li>
+      <li>6. She <b>had left</b> before I arrived. (Past Perfect)</li>
+      <li>7. They <b>will have completed</b> it by Monday. (Future Perfect)</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+  <b>4. Adjectives & Adverbs</b>
+  <div class="card-content">
+    <p>Adjectives describe nouns. Adverbs describe verbs, adjectives, or other adverbs.</p>
+    <ul>
+      <li>1. She is a <b>beautiful</b> girl. (Adjective)</li>
+      <li>2. He runs <b>quickly</b>. (Adverb)</li>
+      <li>3. The movie was <b>very interesting</b>. (Adjective + Adverb)</li>
+      <li>4. They arrived <b>early</b>.</li>
+      <li>5. She spoke <b>softly</b>.</li>
+      <li>6. It is a <b>huge</b> building.</li>
+      <li>7. He solved the problem <b>efficiently</b>.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+  <b>5. Prepositions & Conjunctions</b>
+  <div class="card-content">
+    <p>Prepositions show relationships. Conjunctions connect words or clauses.</p>
+    <ul>
+      <li>1. The cat is <b>on</b> the roof.</li>
+      <li>2. I am going <b>to</b> school.</li>
+      <li>3. He came <b>after</b> lunch.</li>
+      <li>4. I like tea <b>and</b> coffee.</li>
+      <li>5. She is smart <b>but</b> lazy.</li>
+      <li>6. You can stay here <b>or</b> come with me.</li>
+      <li>7. I stayed because I was <b>tired</b>.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+  <b>6. Articles & Subject-Verb Agreement</b>
+  <div class="card-content">
+    <p>Articles (a, an, the) specify nouns. Subject-Verb Agreement ensures subject and verb match in number.</p>
+    <ul>
+      <li>1. I saw <b>a</b> dog.</li>
+      <li>2. She is <b>an</b> engineer.</li>
+      <li>3. <b>The</b> sun rises in the east.</li>
+      <li>4. He <b>runs</b> fast.</li>
+      <li>5. They <b>are</b> students.</li>
+      <li>6. My brother <b>likes</b> football.</li>
+      <li>7. The dogs <b>bark</b> loudly.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card" onclick="toggleCard(this)">
+  <b>7. Punctuation & Mechanics</b>
+  <div class="card-content">
+    <p>Correct punctuation and capitalization improve writing clarity.</p>
+    <ul>
+      <li>1. She said, "I am happy."</li>
+      <li>2. I bought apples, oranges, and bananas.</li>
+      <li>3. My brother’s car is new.</li>
+      <li>4. Use a period at the end of a sentence.</li>
+      <li>5. Capitalize proper nouns: Varanasi, Aayush.</li>
+      <li>6. Separate clauses with semicolons if needed.</li>
+      <li>7. Apostrophes show possession: The teacher’s book.</li>
+    </ul>
+  </div>
+</div>
+
 </section>
 
 <section id="quiz">
-  <h2>📝 Grammar Quiz</h2>
-  <div id="quiz-container" class="card"></div>
-  <button id="next-btn" onclick="nextQuestion()" style="display:none;">Next</button>
-  <p id="score"></p>
+<h2>📝 Grammar Quiz</h2>
+<div id="quiz-container" class="card"></div>
+<button id="next-btn" onclick="nextQuestion()" style="display:none;">Next</button>
+<p id="score"></p>
 </section>
 
 <section id="writing">
-  <h2>✍️ Writing Practice</h2>
-  <div class="card">
-    <p>Write a short essay using at least 5 vocabulary words:</p>
-    <textarea id="essay"></textarea>
-    <button class="btn" onclick="checkWriting()">Check</button>
-    <p id="writing-feedback"></p>
-  </div>
+<h2>✍️ Writing Practice</h2>
+<div class="card">
+  <p>Write a short essay using at least 5 vocabulary words:</p>
+  <textarea id="essay"></textarea>
+  <button class="btn" onclick="checkWriting()">Check</button>
+  <p id="writing-feedback"></p>
+</div>
 </section>
 
 <section id="game">
-  <h2>🎮 Word Game</h2>
-  <div class="card" style="text-align:center;">
-    <p>Type the shown word correctly:</p>
-    <h3 id="game-word">loading...</h3>
-    <input type="text" id="game-input" placeholder="Type here"/>
-    <button class="btn" onclick="checkGame()">Submit</button>
-    <p id="game-feedback"></p>
-  </div>
+<h2>🎮 Word Game</h2>
+<div class="card" style="text-align:center;">
+  <p>Type the shown word correctly:</p>
+  <h3 id="game-word">loading...</h3>
+  <input type="text" id="game-input" placeholder="Type here"/>
+  <button class="btn" onclick="checkGame()">Submit</button>
+  <p id="game-feedback"></p>
+</div>
 </section>
 
 <footer>
-  <p>Developed by <strong>Aayush Singh</strong></p>
-  <img src="https://i.ibb.co/4jRZQjp/profile.png" alt="Aayush Singh"/>
+<p>Developed by <strong>Aayush Singh</strong></p>
+<img src="https://i.ibb.co/4jRZQjp/profile.png" alt="Aayush Singh"/>
 </footer>
 
 <script>
+/* === Toggle Card Content === */
+function toggleCard(card){
+  const content = card.querySelector(".card-content");
+  content.style.display = content.style.display === "block" ? "none" : "block";
+}
+
 /* === QUIZ ENGINE === */
-let questions = [
-  {
-    question: "Choose the correct sentence:",
-    options: ["She go to school every day.", "She goes to school every day.", "She going to school every day."],
-    answer: 1
-  },
-  {
-    question: "Which is correct?",
-    options: ["He don’t like apples.", "He doesn’t likes apples.", "He doesn’t like apples."],
-    answer: 2
-  },
-  {
-    question: "Fill in: She has been ____ since morning.",
-    options: ["cry", "crying", "cried"],
-    answer: 1
-  },
-  {
-    question: "Passive voice: She wrote a letter.",
-    options: ["A letter is written by her.", "A letter was written by her.", "A letter wrote by her."],
-    answer: 1
-  },
-  {
-    question: "Which is correct?",
-    options: ["Each of the boys are playing.", "Each of the boys is playing.", "Each boys is playing."],
-    answer: 1
-  }
+let questions=[
+{question:"Choose the correct sentence:",options:["She go to school every day.","She goes to school every day.","She going to school every day."],answer:1},
+{question:"Which is correct?",options:["He don’t like apples.","He doesn’t likes apples.","He doesn’t like apples."],answer:2},
+{question:"Fill in: She has been ____ since morning.",options:["cry","crying","cried"],answer:1},
+{question:"Passive voice: She wrote a letter.",options:["A letter is written by her.","A letter was written by her.","A letter wrote by her."],answer:1},
+{question:"Which is correct?",options:["Each of the boys are playing.","Each of the boys is playing.","Each boys is playing."],answer:1}
 ];
-let currentQuestion = 0, score = 0;
+let currentQuestion=0,score=0;
 function loadQuestion(){
-  const q = questions[currentQuestion];
+  const q=questions[currentQuestion];
   const container=document.getElementById("quiz-container");
   container.innerHTML=`<p><b>Q${currentQuestion+1}:</b> ${q.question}</p>`;
-  q.options.forEach((opt,i)=>{
-    container.innerHTML+=`<button onclick="checkAnswer(${i})">${opt}</button>`;
-  });
+  q.options.forEach((opt,i)=>{container.innerHTML+=`<button onclick="checkAnswer(${i})">${opt}</button>`;});
 }
 function checkAnswer(selected){
   const q=questions[currentQuestion];
@@ -126,14 +220,8 @@ function checkAnswer(selected){
 }
 function nextQuestion(){
   currentQuestion++;
-  if(currentQuestion<questions.length){
-    loadQuestion();
-    document.getElementById("next-btn").style.display="none";
-  }else{
-    document.getElementById("quiz-container").innerHTML="🎉 Quiz Finished!";
-    document.getElementById("score").innerText=`Your Score: ${score}/${questions.length}`;
-    document.getElementById("next-btn").style.display="none";
-  }
+  if(currentQuestion<questions.length){loadQuestion();document.getElementById("next-btn").style.display="none";}
+  else{document.getElementById("quiz-container").innerHTML="🎉 Quiz Finished!";document.getElementById("score").innerText=`Your Score: ${score}/${questions.length}`;document.getElementById("next-btn").style.display="none";}
 }
 loadQuestion();
 
@@ -141,33 +229,19 @@ loadQuestion();
 function checkWriting(){
   const essay=document.getElementById("essay").value;
   const fb=document.getElementById("writing-feedback");
-  if(essay.split(" ").length<20){
-    fb.innerText="⚠️ Write at least 20 words.";
-    fb.style.color="red";
-  }else{
-    fb.innerText="✅ Great! Keep practicing and use advanced vocabulary.";
-    fb.style.color="green";
-  }
+  if(essay.split(" ").length<20){fb.innerText="⚠️ Write at least 20 words.";fb.style.color="red";}
+  else{fb.innerText="✅ Great! Keep practicing and use advanced vocabulary.";fb.style.color="green";}
 }
 
 /* === GAME === */
 const words=["grammar","vocabulary","education","knowledge","practice","syntax","punctuation"];
 let currentWord="";
-function newWord(){
-  currentWord=words[Math.floor(Math.random()*words.length)];
-  document.getElementById("game-word").innerText=currentWord;
-}
+function newWord(){currentWord=words[Math.floor(Math.random()*words.length)];document.getElementById("game-word").innerText=currentWord;}
 function checkGame(){
   const input=document.getElementById("game-input").value.trim();
   const fb=document.getElementById("game-feedback");
-  if(input===currentWord){
-    fb.innerText="🎉 Correct!";
-    fb.style.color="green";
-    newWord();
-  }else{
-    fb.innerText="❌ Try again.";
-    fb.style.color="red";
-  }
+  if(input===currentWord){fb.innerText="🎉 Correct!";fb.style.color="green";newWord();}
+  else{fb.innerText="❌ Try again.";fb.style.color="red";}
   document.getElementById("game-input").value="";
 }
 newWord();
