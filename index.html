@@ -6,7 +6,7 @@
 <title>Grammaroid - Oxford Grammar Learning</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
-body{background:linear-gradient(135deg,#eef2f3,#d9e4f5);color:#333;line-height:1.6;}
+body{background:linear-gradient(135deg,#eef2f3,#d9e4f5);color:#333;line-height:1.6;user-select:none;}
 header{background:linear-gradient(90deg,#4a90e2,#0072ff);color:#fff;text-align:center;padding:20px;position:sticky;top:0;z-index:1000;}
 header h1{font-size:2rem;animation:float 3s ease-in-out infinite;}
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
@@ -25,9 +25,10 @@ textarea{width:100%;height:150px;padding:15px;border-radius:10px;border:1px soli
 .btn:hover{background:#0056b3;}
 footer{text-align:center;background:#f8f8f8;padding:20px;margin-top:40px;}
 footer img{width:50px;height:50px;border-radius:50%;margin-top:10px;}
+#lockOverlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);color:#fff;display:none;justify-content:center;align-items:center;font-size:1.5rem;z-index:9999;}
 </style>
 </head>
-<body>
+<body oncontextmenu="return false;" oncopy="return false;" oncut="return false;" onselectstart="return false;">
 
 <header>
   <h1>Grammaroid</h1>
@@ -39,8 +40,31 @@ footer img{width:50px;height:50px;border-radius:50%;margin-top:10px;}
   </nav>
 </header>
 
+<div id="lockOverlay">⛔ Site locked for 20 minutes due to tab switching!</div>
+
 <section id="topics">
 <h2>📚 Learn Grammar</h2>
+
+<div class="card" onclick="toggleCard(this)">
+  <b>3. Verbs & Tenses</b>
+  <div class="card-content">
+    <p>Verbs show actions or states. Tenses show the time of action. Formulas below:</p>
+    <ul>
+      <li><b>1. Present Simple:</b> Subject + Base Verb. Example: I eat breakfast every day.</li>
+      <li><b>2. Present Continuous:</b> Subject + am/is/are + Verb-ing. Example: I am eating now.</li>
+      <li><b>3. Present Perfect:</b> Subject + have/has + Past Participle. Example: I have eaten breakfast.</li>
+      <li><b>4. Present Perfect Continuous:</b> Subject + have/has + been + Verb-ing. Example: I have been eating for 20 mins.</li>
+      <li><b>5. Past Simple:</b> Subject + Verb-ed (regular) / 2nd form (irregular). Example: I ate breakfast yesterday.</li>
+      <li><b>6. Past Continuous:</b> Subject + was/were + Verb-ing. Example: I was eating when you called.</li>
+      <li><b>7. Past Perfect:</b> Subject + had + Past Participle. Example: I had eaten before he came.</li>
+      <li><b>8. Past Perfect Continuous:</b> Subject + had + been + Verb-ing. Example: I had been eating for 20 mins.</li>
+      <li><b>9. Future Simple:</b> Subject + will + Base Verb. Example: I will eat tomorrow.</li>
+      <li><b>10. Future Continuous:</b> Subject + will + be + Verb-ing. Example: I will be eating at 8 AM.</li>
+      <li><b>11. Future Perfect:</b> Subject + will + have + Past Participle. Example: I will have eaten by 9 AM.</li>
+      <li><b>12. Future Perfect Continuous:</b> Subject + will + have + been + Verb-ing. Example: I will have been eating for 20 mins.</li>
+    </ul>
+  </div>
+</div>
 
 <div class="card" onclick="toggleCard(this)">
   <b>1. Nouns</b>
@@ -154,6 +178,7 @@ footer img{width:50px;height:50px;border-radius:50%;margin-top:10px;}
     </ul>
   </div>
 </div>
+<!-- Other topic cards like Nouns, Pronouns, etc. can be added here following the same card structure -->
 
 </section>
 
@@ -191,60 +216,38 @@ footer img{width:50px;height:50px;border-radius:50%;margin-top:10px;}
 </footer>
 
 <script>
-/* === Toggle Card Content === */
+/* === CARD TOGGLE === */
 function toggleCard(card){
   const content = card.querySelector(".card-content");
-  content.style.display = content.style.display === "block" ? "none" : "block";
+  content.style.display = content.style.display==="block"?"none":"block";
 }
 
-/* === QUIZ ENGINE === */
-let questions=[
-{question:"Choose the correct sentence:",options:["She go to school every day.","She goes to school every day.","She going to school every day."],answer:1},
-{question:"Which is correct?",options:["He don’t like apples.","He doesn’t likes apples.","He doesn’t like apples."],answer:2},
-{question:"Fill in: She has been ____ since morning.",options:["cry","crying","cried"],answer:1},
-{question:"Passive voice: She wrote a letter.",options:["A letter is written by her.","A letter was written by her.","A letter wrote by her."],answer:1},
-{question:"Which is correct?",options:["Each of the boys are playing.","Each of the boys is playing.","Each boys is playing."],answer:1}
-];
+/* === QUIZ === */
+let questions=[{question:"Choose the correct sentence:",options:["She go to school every day.","She goes to school every day.","She going to school every day."],answer:1}];
 let currentQuestion=0,score=0;
-function loadQuestion(){
-  const q=questions[currentQuestion];
-  const container=document.getElementById("quiz-container");
-  container.innerHTML=`<p><b>Q${currentQuestion+1}:</b> ${q.question}</p>`;
-  q.options.forEach((opt,i)=>{container.innerHTML+=`<button onclick="checkAnswer(${i})">${opt}</button>`;});
-}
-function checkAnswer(selected){
-  const q=questions[currentQuestion];
-  if(selected===q.answer){score++;alert("✅ Correct!");}
-  else{alert("❌ Wrong. Correct: "+q.options[q.answer]);}
-  document.getElementById("next-btn").style.display="block";
-}
-function nextQuestion(){
-  currentQuestion++;
-  if(currentQuestion<questions.length){loadQuestion();document.getElementById("next-btn").style.display="none";}
-  else{document.getElementById("quiz-container").innerHTML="🎉 Quiz Finished!";document.getElementById("score").innerText=`Your Score: ${score}/${questions.length}`;document.getElementById("next-btn").style.display="none";}
-}
+function loadQuestion(){const q=questions[currentQuestion];const container=document.getElementById("quiz-container");container.innerHTML=`<p><b>Q${currentQuestion+1}:</b> ${q.question}</p>`;q.options.forEach((opt,i)=>{container.innerHTML+=`<button onclick="checkAnswer(${i})">${opt}</button>`;});}
+function checkAnswer(selected){const q=questions[currentQuestion];if(selected===q.answer){score++;alert("✅ Correct!");}else{alert("❌ Wrong. Correct: "+q.options[q.answer]);}document.getElementById("next-btn").style.display="block";}
+function nextQuestion(){currentQuestion++;if(currentQuestion<questions.length){loadQuestion();document.getElementById("next-btn").style.display="none";}else{document.getElementById("quiz-container").innerHTML="🎉 Quiz Finished!";document.getElementById("score").innerText=`Your Score: ${score}/${questions.length}`;document.getElementById("next-btn").style.display="none";}}
 loadQuestion();
 
-/* === WRITING FEEDBACK === */
-function checkWriting(){
-  const essay=document.getElementById("essay").value;
-  const fb=document.getElementById("writing-feedback");
-  if(essay.split(" ").length<20){fb.innerText="⚠️ Write at least 20 words.";fb.style.color="red";}
-  else{fb.innerText="✅ Great! Keep practicing and use advanced vocabulary.";fb.style.color="green";}
-}
+/* === WRITING === */
+function checkWriting(){const essay=document.getElementById("essay").value;const fb=document.getElementById("writing-feedback");if(essay.split(" ").length<20){fb.innerText="⚠️ Write at least 20 words.";fb.style.color="red";}else{fb.innerText="✅ Great! Keep practicing and use advanced vocabulary.";fb.style.color="green";}}
 
 /* === GAME === */
 const words=["grammar","vocabulary","education","knowledge","practice","syntax","punctuation"];
 let currentWord="";
 function newWord(){currentWord=words[Math.floor(Math.random()*words.length)];document.getElementById("game-word").innerText=currentWord;}
-function checkGame(){
-  const input=document.getElementById("game-input").value.trim();
-  const fb=document.getElementById("game-feedback");
-  if(input===currentWord){fb.innerText="🎉 Correct!";fb.style.color="green";newWord();}
-  else{fb.innerText="❌ Try again.";fb.style.color="red";}
-  document.getElementById("game-input").value="";
-}
+function checkGame(){const input=document.getElementById("game-input").value.trim();const fb=document.getElementById("game-feedback");if(input===currentWord){fb.innerText="🎉 Correct!";fb.style.color="green";newWord();}else{fb.innerText="❌ Try again.";fb.style.color="red";}document.getElementById("game-input").value="";}
 newWord();
+
+/* === TAB SWITCH LOCK === */
+let lockTime=20*60*1000; // 20 minutes
+document.addEventListener("visibilitychange", function() {
+  if(document.hidden){
+    document.getElementById("lockOverlay").style.display="flex";
+    setTimeout(()=>{document.getElementById("lockOverlay").style.display="none";}, lockTime);
+  }
+});
 </script>
 
 </body>
